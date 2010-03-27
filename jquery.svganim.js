@@ -80,7 +80,7 @@ function parseViewBox(value) {
 $.fx.step['svgTransform'] = $.fx.step['svg-transform'] = function(fx) {
 	var attr = fx.elem.attributes.getNamedItem('transform');
 	if (!fx.set) {
-		fx.start = parseTransform(attr ? attr.nodeValue : '');
+		fx.start = parseTransform($(fx.elem).first().data("svgTransform") || (attr ? attr.nodeValue : ''));
 		fx.end = parseTransform(fx.end, fx.start);
 		fx.set = true;
 	}
